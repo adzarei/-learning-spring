@@ -1,9 +1,6 @@
 package com.adzarei.learningspring;
 
-import com.adzarei.learningspring.controllers.AutoConstructorInjectedController;
-import com.adzarei.learningspring.controllers.AutoPropertyInjectedController;
-import com.adzarei.learningspring.controllers.AutoSetterInjectedController;
-import com.adzarei.learningspring.controllers.MyController;
+import com.adzarei.learningspring.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -18,6 +15,10 @@ public class LearningSpringApplication {
 		MyController myController = (MyController) ctx.getBean("myController");
 		String greeting = myController.sayHello();
 		System.out.println(greeting);
+
+		System.out.println("-------> Primary Controller");
+		PrimaryController primaryController = (PrimaryController) ctx.getBean("primaryController");
+		System.out.println(primaryController.getGreeting());
 
 
 		System.out.println("-------> Constructor Controller");
