@@ -17,6 +17,7 @@ public class LearningSpringApplication {
 		System.out.println(greeting);
 
 		System.out.println("-------> Primary Controller");
+		// No Qualifier provided. Primary Bean loaded.
 		PrimaryController primaryController = (PrimaryController) ctx.getBean("primaryController");
 		System.out.println(primaryController.getGreeting());
 
