@@ -4,6 +4,7 @@ import com.adzarei.learningspring.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 public class LearningSpringApplication {
@@ -15,6 +16,7 @@ public class LearningSpringApplication {
 		MyController myController = (MyController) ctx.getBean("myController");
 		String greeting = myController.sayHello();
 		System.out.println(greeting);
+
 
 		System.out.println("-------> Primary Controller");
 		// No Qualifier provided. Primary Bean loaded.
@@ -36,6 +38,10 @@ public class LearningSpringApplication {
 		AutoPropertyInjectedController propertyInjectedController =
 				(AutoPropertyInjectedController) ctx.getBean("autoPropertyInjectedController");
 		System.out.println(propertyInjectedController.getGreeting());
+
+		System.out.println("-------> i18n Controller");
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 
 	}
 
