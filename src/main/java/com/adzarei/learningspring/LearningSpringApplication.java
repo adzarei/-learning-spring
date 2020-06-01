@@ -1,13 +1,40 @@
 package com.adzarei.learningspring;
 
+import com.adzarei.learningspring.controllers.AutoConstructorInjectedController;
+import com.adzarei.learningspring.controllers.AutoPropertyInjectedController;
+import com.adzarei.learningspring.controllers.AutoSetterInjectedController;
+import com.adzarei.learningspring.controllers.MyController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class LearningSpringApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LearningSpringApplication.class, args);
+		ApplicationContext ctx = SpringApplication.run(LearningSpringApplication.class, args);
+
+		System.out.println("-------> My Controller");
+		MyController myController = (MyController) ctx.getBean("myController");
+		String greeting = myController.sayHello();
+		System.out.println(greeting);
+
+
+		System.out.println("-------> Constructor Controller");
+		AutoConstructorInjectedController constructorController =
+				(AutoConstructorInjectedController) ctx.getBean("autoConstructorInjectedController");
+		System.out.println(constructorController.getGreeting());
+
+		System.out.println("-------> Setter Controller");
+		AutoSetterInjectedController setterInjectedController =
+				(AutoSetterInjectedController) ctx.getBean("autoSetterInjectedController");
+		System.out.println(setterInjectedController.getGreeting());
+
+		System.out.println("-------> Property Controller");
+		AutoPropertyInjectedController propertyInjectedController =
+				(AutoPropertyInjectedController) ctx.getBean("autoPropertyInjectedController");
+		System.out.println(propertyInjectedController.getGreeting());
+
 	}
 
 }
